@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: full-environment
+  labels:
+    app: ubuntu
+spec:
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - image: dev-machine
+        name: dev-box
+        volumeMounts:
+        - name: dev-pv-1
+          mountPath: /tmp/data/dev-pv-1
