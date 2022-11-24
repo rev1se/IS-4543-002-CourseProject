@@ -37,6 +37,7 @@ spec:
 ---
 apiVersion: v1
 kind: Service
+
 metadata:
   name: httpd
   labels:
@@ -45,10 +46,11 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 80
     protocol: TCP
     appProtocol: http
   selector:
     app.kubernetes.io/name: httpd
     app.kubernetes.io/component: backend
+  type: LoadBalancer
 ---
